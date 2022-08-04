@@ -12,7 +12,6 @@ bookingRequest {
     carPlate: . . .,
     date: . . .,
     time: . . .,
-    servicePackage: . . .,
 }
 
 ## Users of the app
