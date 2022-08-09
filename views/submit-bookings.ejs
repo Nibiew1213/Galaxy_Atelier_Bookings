@@ -1,0 +1,45 @@
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Submit Your Booking</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">Submit your booking and confirmation will be done through text or call</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form action="/submit-bookings" enctype="multipart/form-data" method="POST">
+
+            <div class="row g-3">
+
+                <div class="col-12">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="phone" class="form-label">Phone number</label>
+                    <input type="tel" name="phone" id="phone" pattern="[0-9]{8}" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="carModel" class="form-label">Car Model</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="carPlate" class="form-label">Car Plate Number</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="bookingTime" class="form-label">Booking Time (date and time):</label>
+                    <input type="datetime-local" name="bookingTime" id="bookingTime" class="form-control" required>
+                </div>
+        
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit Booking</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

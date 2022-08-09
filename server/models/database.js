@@ -9,4 +9,4 @@ db.once('open', function(){
 });
 
 // Models
-require('./Bookings')
+require('./Category')

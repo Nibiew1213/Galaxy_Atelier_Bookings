@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const bookingsSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: 'This field is required.'
@@ -11,4 +11,4 @@ const bookingsSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Bookings', bookingsSchema)
+module.exports = mongoose.model('Category', categorySchema)
