@@ -61,15 +61,58 @@ const Bookings = require('../models/Bookings');
   
 }
 
+/**
+ * GET /show-bookings/:id
+ * Bookings
+ */
+ exports.exploreBookings = async(req, res) => {
+    try {
+        let bookingId = req.params.id
+        const showBookings = await Bookings.findById(bookingId)
+        res.render('show-bookings', { title: 'Galaxy Atelier - Bookings', showBookings} )
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" })
+    }
+}
+
+
+/**
+ * PUT /edit-bookings/:id
+ * Bookings
+ */
+ exports.updateBookings = async(req, res) => {
+    try {
+        let bookingId = req.params.id
+        const editBookings = await Bookings.findById(bookingId)
+        res.render('edit-bookings', { title: 'Galaxy Atelier - Bookings', editBookings} )
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" })
+    }
+}
+
+
+// async function updateBookings() {
+//     try {
+//         const res = await Bookings.updateOne({ name: 'Nibiew' }, { name: 'Wei Bin' })
+//         res.n // Display number of document matched
+//         res.nModified // Display number of documents modified
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// updateBookings()
 
 
 
-
-
-
-
-
-
+// // Delete Bookings
+// async function deleteBooking() {
+//     try {
+//         await Bookings.deleteOne( { name: 'Wei Bin' } )
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// deleteBooking()
 
 
 

@@ -1,1 +1,50 @@
-<h1>show bookings</h1>
+<% if(showBookings != null) { %>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%- showBookings.name %></li>
+        </ol>
+      </nav>
+
+
+    <div class="row g-3">
+
+        <div class="col-12">
+            <label for="name" class="form-label">Name</label>
+            <h2><%- showBookings.name %></h2>
+        </div>
+        
+        <div class="col-12">
+            <label for="phone" class="form-label">Phone number</label>
+            <h2><%- showBookings.phone %></h2>
+        </div>
+        
+        <div class="col-12">
+            <label for="carModel" class="form-label">Car Model</label>
+            <h2><%- showBookings.carModel %></h2>
+        </div>
+        
+        <div class="col-12">
+            <label for="carPlate" class="form-label">Car Plate Number</label>
+            <h2><%- showBookings.carPlate %></h2>
+        </div>
+        
+        <div class="col-12">
+            <label for="bookingTime" class="form-label">Booking Time (date and time):</label>
+            <h2><%- showBookings.bookingTime %></h2>
+        </div>
+        
+        <div class="col-12">
+            <a href="/edit-bookings" class="btn btn-primary btn-dark btn-lg">Edit Bookings</a>
+        </div>
+
+        <div class="col-12">
+            <a href="/delete-bookings" class="btn btn-primary btn-dark btn-lg">Delete Bookings</a>
+        </div>
+    </div>
+    
+
+<% } %>    
+
+
