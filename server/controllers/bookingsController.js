@@ -122,7 +122,13 @@ const Bookings = require('../models/Bookings');
     }
 }
 
-
+exports.maintenance = async(req, res) => {
+    try {
+        res.render('maintenance')
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 /**
  * POST /edit-bookings/:id

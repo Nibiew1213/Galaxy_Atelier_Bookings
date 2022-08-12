@@ -14,4 +14,6 @@ router.get('/edit-bookings/:id', bookingsController.editBookings)
 router.put('/update-bookings/:id', bookingsController.updateBookings)
 router.delete('/delete-bookings/:id', bookingsController.deleteBookings)
 
+router.get('/maintenance', bookingsController.maintenance)
+
 module.exports = router
