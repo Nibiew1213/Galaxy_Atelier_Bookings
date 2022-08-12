@@ -1,4 +1,5 @@
 require('../models/database');
+const mongoose = require('mongoose')
 const Category = require('../models/Category');
 const Bookings = require('../models/Bookings');
 
@@ -8,7 +9,7 @@ const Bookings = require('../models/Bookings');
  */
  exports.homepage = async(req, res) => {
     try {
-        const limitNumber = 6
+        const limitNumber = 20
         const categories = await Category.find({}).limit(limitNumber)
         const latest = await Bookings.find({}).sort({_id: -1}).limit(limitNumber)
 
@@ -19,9 +20,6 @@ const Bookings = require('../models/Bookings');
         res.status(500).send({ message: error.message || "Error Occured" })
     }
 }
-
-
-
 
 /**
  * GET /submit-bookings
@@ -39,9 +37,7 @@ const Bookings = require('../models/Bookings');
  * Submit Bookings
  */
  exports.submitBookingsOnPost = async(req, res) => {
-
     try {
-
         const newBooking = new Bookings({
             name: req.body.name,
             phone: req.body.phone,
@@ -49,16 +45,14 @@ const Bookings = require('../models/Bookings');
             carPlate: req.body.carPlate,
             bookingTime: req.body.bookingTime,
         })
-
         await newBooking.save()
 
-        req.flash('infoSubmit', 'Booking has been added, please await confirmation.')
+        req.flash('infoSubmit', 'Thank you for the booking, please await confirmation via call or messages.')
         res.redirect('/submit-bookings')
     } catch (error) {
         req.flash('infoErrors', error)
         res.redirect('/submit-bookings')
     }
-  
 }
 
 /**
@@ -67,8 +61,9 @@ const Bookings = require('../models/Bookings');
  */
  exports.exploreBookings = async(req, res) => {
     try {
-        let bookingId = req.params.id
+        const bookingId = req.params.id
         const showBookings = await Bookings.findById(bookingId)
+        console.log(showBookings);
         res.render('show-bookings', { title: 'Galaxy Atelier - Bookings', showBookings} )
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" })
@@ -77,18 +72,73 @@ const Bookings = require('../models/Bookings');
 
 
 /**
- * PUT /edit-bookings/:id
+ * GET /edit-bookings/:id
  * Bookings
  */
- exports.updateBookings = async(req, res) => {
+ exports.editBookings = async(req, res) => {
     try {
-        let bookingId = req.params.id
+        const bookingId = req.params.id
         const editBookings = await Bookings.findById(bookingId)
+        console.log(editBookings);
         res.render('edit-bookings', { title: 'Galaxy Atelier - Bookings', editBookings} )
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" })
     }
 }
+
+
+/**
+ * PUT /update-bookings/:id
+ * Bookings
+ */
+ exports.updateBookings = async(req, res) => {
+    try {
+        const bookingId = req.params.id
+        const updatedDetails = req.body
+        let updatedBooking = await Bookings.findOneAndUpdate(bookingId, updatedDetails)  
+        console.log(updatedBooking);
+        res.redirect('/')
+     
+    } catch (error) {
+        req.flash('infoErrors', error)
+        res.redirect('/edit-bookings/:id')
+    }
+}
+
+
+/**
+ * DELETE /show-bookings/:id
+ * Bookings
+ */
+ exports.deleteBookings = async(req, res) => {
+    try {
+        let bookingId = req.params.id
+        console.log(bookingId)
+        // return
+        await Bookings.findByIdAndDelete(bookingId)
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+/**
+ * POST /edit-bookings/:id
+ * Bookings
+ */
+//  exports.updateBookings = async(req, res) => {
+//     try {
+//         let bookingId = req.params.id
+//         console.log(bookingId)
+//         const editBookings = await Bookings.findById(bookingId)
+//         console.log(editBookings)
+//         res.render('edit-bookings', { title: 'Galaxy Atelier - Bookings', editBookings} )
+//     } catch (error) {
+//         res.status(500).send({ message: error.message || "Error Occured" })
+//     }
+// }
 
 
 // async function updateBookings() {

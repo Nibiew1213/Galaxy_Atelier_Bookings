@@ -4,6 +4,7 @@ const fileUpload = require('express-fileupload')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
+const methodOverride = require('method-override');
 // const mongoose = require('mongoose')
 // const session = require('express-session')
 
@@ -17,6 +18,7 @@ require('dotenv').config() // for storing all database details
 app.use(express.urlencoded( { extended: true } ))
 app.use(express.static('public'))
 app.use(expressLayouts)
+app.use(methodOverride('_method'));
 
 app.use(cookieParser('GalaxyAtelierSecure'))
 app.use(session({

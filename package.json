@@ -25,6 +25,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.0"
   },
@@ -33,4 +34,3 @@
     "npm": "8.x"
   }
 }
-
