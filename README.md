@@ -52,3 +52,4 @@ bookingRequest {
 + Customer can only create, view and edit his/her own current booking 
 + Calender to view all current confirm bookings
 
+Click [here](https://galaxy-atelier-bookings.herokuapp.com/) to proceed to the app!
