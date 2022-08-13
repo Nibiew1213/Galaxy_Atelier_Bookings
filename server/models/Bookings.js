@@ -23,7 +23,7 @@ const bookingsSchema = new mongoose.Schema({
     }
 });
 
-bookingsSchema.index({ name: 'text', description: 'text' })
+// bookingsSchema.index({ name: 'text', description: 'text' })
 
 
 
